@@ -37,7 +37,7 @@ class RuleList(ListView):
                 pass
 
     def get_domain(self):
-        scheme = self.request.is_secure() and "https" or "http"
+        scheme = "https" if self.request.is_secure() else "http"
         if not self.current_site.domain.startswith(("http", "https")):
             return "%s://%s" % (scheme, self.current_site.domain)
         return self.current_site.domain
